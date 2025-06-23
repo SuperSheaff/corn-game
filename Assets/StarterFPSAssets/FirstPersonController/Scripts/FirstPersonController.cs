@@ -3,6 +3,10 @@
 using UnityEngine.InputSystem;
 #endif
 
+using FMODUnity;
+using FMOD.Studio;
+using UnityEditor.UI;
+
 namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
@@ -51,6 +55,11 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		private EventInstance footstepInstance;
+		[Header("FMOD")]
+		[SerializeField] private EventReference _footstepsEvent;
+
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -64,7 +73,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
@@ -78,11 +87,11 @@ namespace StarterAssets
 		{
 			get
 			{
-				#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-				#else
+#else
 				return false;
-				#endif
+#endif
 			}
 		}
 
@@ -108,6 +117,9 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			//fmod
+			footstepInstance = RuntimeManager.CreateInstance(_footstepsEvent);
 		}
 
 		private void Update()
@@ -136,7 +148,7 @@ namespace StarterAssets
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
+
 				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
@@ -160,8 +172,12 @@ namespace StarterAssets
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-
+			if (_input.move == Vector2.zero)
+			{
+				targetSpeed = 0.0f;
+				//fmod
+				footstepInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+			}
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -181,6 +197,11 @@ namespace StarterAssets
 			else
 			{
 				_speed = targetSpeed;
+				//fmod
+				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded)
+				{
+					footstepInstance.start();
+				}
 			}
 
 			// normalise input direction
@@ -191,7 +212,7 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
 				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;	
 			}
 
 			// move the player
@@ -216,6 +237,8 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					//fmod
+					footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 				}
 
 				// jump timeout
@@ -244,6 +267,13 @@ namespace StarterAssets
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
+		}
+
+		PLAYBACK_STATE PlaybackState(EventInstance instance)
+		{
+			PLAYBACK_STATE pS;
+			instance.getPlaybackState(out pS);
+			return pS;
 		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
