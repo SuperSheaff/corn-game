@@ -176,7 +176,7 @@ namespace StarterAssets
 			{
 				targetSpeed = 0.0f;
 				//fmod
-				footstepInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				//footstepInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 			}
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -197,11 +197,6 @@ namespace StarterAssets
 			else
 			{
 				_speed = targetSpeed;
-				//fmod
-				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded)
-				{
-					footstepInstance.start();
-				}
 			}
 
 			// normalise input direction
@@ -213,6 +208,11 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;	
+				//fmod
+				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded)
+				{
+					footstepInstance.start();
+				}
 			}
 
 			// move the player
@@ -238,7 +238,7 @@ namespace StarterAssets
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 					//fmod
-					footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+					//footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 				}
 
 				// jump timeout
