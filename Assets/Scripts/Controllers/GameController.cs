@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 
     private bool isReceiving = false;
 
+    public bool IsTransmitting { get; private set; }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,34 +20,24 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.R))
+        if (!isReceiving)
         {
-            if (isReceiving)
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                StopReceiving();
-            }
-            else
-            {
-                StartReceiving();
+                IsTransmitting = true;
+                UIController.Instance.ShowHand(UIController.HandName.Transmitting);
             }
 
+            if (Input.GetKeyUp(KeyCode.T))
+            {
+                IsTransmitting = false;
+                UIController.Instance.ShowHand(UIController.HandName.Idle);
+            }
         }
-
-        if (isReceiving)
-            return; // Block input if receiving
-
-        if (Input.GetKeyDown(KeyCode.T))
+        else
         {
-            UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+            IsTransmitting = false;
         }
-
-        if (Input.GetKeyUp(KeyCode.T))
-        {
-            UIController.Instance.ShowHand(UIController.HandName.Idle);
-        }
-
-
     }
 
     public void StartReceiving()
