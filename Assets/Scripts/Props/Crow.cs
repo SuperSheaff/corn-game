@@ -94,7 +94,6 @@ public class Crow : MonoBehaviour
         isFlying = true;
     }
 
-
     void FlyAway()
     {
         animator.SetBool("Idle", false);
