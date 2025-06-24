@@ -1,4 +1,7 @@
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
+using Unity.VisualScripting;
 
 public class Scarecrow : Interactable
 {
@@ -9,6 +12,14 @@ public class Scarecrow : Interactable
 
     private bool isRaised = false;
 
+    private EventInstance scarecrowCreakInstance;
+    [SerializeField]
+    private EventReference _scarecrowCreakEvent;
+
+    void Start()
+    {
+        scarecrowCreakInstance = RuntimeManager.CreateInstance(_scarecrowCreakEvent);   
+    }
     void Update()
     {
         Quaternion targetRotation = Quaternion.Euler(isRaised ? raisedRotationEuler : loweredRotationEuler);
@@ -22,6 +33,7 @@ public class Scarecrow : Interactable
     public override void OnInteract()
     {
         isRaised = !isRaised;
+        scarecrowCreakInstance.start();
     }
 
     public void Raise() => isRaised = true;

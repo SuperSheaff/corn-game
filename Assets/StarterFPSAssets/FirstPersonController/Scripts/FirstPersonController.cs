@@ -73,6 +73,11 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		private float _stepTimer = 0f;
+
+		[SerializeField]
+		private float _stepSpeed = 0.8f;
+
 
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -127,6 +132,11 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			if (_stepTimer > 0)
+			{
+				_stepTimer=Mathf.Max(0, _stepTimer -= Time.deltaTime);
+			}
+			//Debug.Log(_stepTimer);
 		}
 
 		private void LateUpdate()
@@ -207,11 +217,13 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
 				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;	
+				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 				//fmod
-				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded)
+				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded && _stepTimer==0)
 				{
 					footstepInstance.start();
+					_stepTimer = _stepSpeed;
+					Debug.Log("FS Start");
 				}
 			}
 

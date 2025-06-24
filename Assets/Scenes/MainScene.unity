@@ -2916,6 +2916,20 @@ MonoBehaviour:
   HandIdle: {fileID: 2069171204}
   HandReceiving: {fileID: 819560404}
   HandTransmitting: {fileID: 1708627243}
+  _walkieOnEvent:
+    Guid:
+      Data1: -454018251
+      Data2: 1321595201
+      Data3: -2103492187
+      Data4: 814810787
+    Path: event:/walkie-on
+  _walkieOffEvent:
+    Guid:
+      Data1: -2013122124
+      Data2: 1317355400
+      Data3: -1374295645
+      Data4: -363736135
+    Path: event:/walkie-off
 --- !u!1001 &352203082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5440,6 +5454,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3975838289147567178, guid: 71945c7dbcbdb4bd18a58f78ff959459, type: 3}
   m_PrefabInstance: {fileID: 590535034}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &595244844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 5393215579111688471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &595244851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595244844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &607960831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8304,7 +8337,14 @@ MonoBehaviour:
   scarecrowPivot: {fileID: 929435809}
   raisedRotationEuler: {x: 0, y: 180, z: 0}
   loweredRotationEuler: {x: -90, y: 180, z: 0}
-  rotateSpeed: 2
+  rotateSpeed: 0.17
+  _scarecrowCreakEvent:
+    Guid:
+      Data1: 1272163619
+      Data2: 1135319430
+      Data3: -1217555540
+      Data4: 1577746561
+    Path: event:/scarecrow-interact
 --- !u!4 &929435809
 Transform:
   m_ObjectHideFlags: 0
@@ -18395,6 +18435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115245345}
+  - component: {fileID: 2115245346}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -18419,6 +18460,37 @@ Transform:
   - {fileID: 2091894186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115245346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115245344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1616328367
+      Data2: 1244368870
+      Data3: -1528407877
+      Data4: 1995768388
+    Path: event:/Atmos-Field
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &2116661990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18861,6 +18933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7039839982077973549, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 595244844}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -18917,7 +18993,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9005220659476430820, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+    - {fileID: 7039839982077973549, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -19242,7 +19320,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 595244851}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1001 &7288094137546172433
 PrefabInstance:

@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class UIController : MonoBehaviour
 {
@@ -7,8 +9,17 @@ public class UIController : MonoBehaviour
     public GameObject HandIdle;
     public GameObject HandReceiving;
     public GameObject HandTransmitting;
+    private EventInstance WalkieOnInstance;
+    [SerializeField]
+    private EventReference _walkieOnEvent;
+    private EventInstance WalkieOffInstance;
+    [SerializeField]
+    private EventReference _walkieOffEvent;
 
     public enum HandName { Idle, Receiving, Transmitting }
+
+    //fmod
+    private 
 
     void Awake()
     {
@@ -18,6 +29,14 @@ public class UIController : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        //fmod
+        WalkieOnInstance = RuntimeManager.CreateInstance(_walkieOnEvent);   
+        WalkieOffInstance = RuntimeManager.CreateInstance(_walkieOffEvent);   
+
     }
 
     public void ShowHand(HandName hand)
@@ -30,12 +49,15 @@ public class UIController : MonoBehaviour
         {
             case HandName.Idle:
                 HandIdle.SetActive(true);
+                WalkieOffInstance.start();
                 break;
             case HandName.Receiving:
                 HandReceiving.SetActive(true);
                 break;
             case HandName.Transmitting:
                 HandTransmitting.SetActive(true);
+                //fmod
+                WalkieOnInstance.start();
                 break;
         }
     }
