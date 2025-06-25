@@ -76,8 +76,7 @@ public class GameController : MonoBehaviour
             {
                 PlayJumpScare();
             }
-            
-            if (Input.GetKey(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.T))
             {
                 IsTransmitting = true;
                 UIController.Instance.ShowHand(UIController.HandName.Transmitting);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2038572087428469432}
   - component: {fileID: 8386319401088382520}
   - component: {fileID: 5037108572645444377}
+  - component: {fileID: -6800637460304631624}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Untagged
@@ -69,6 +70,37 @@ MonoBehaviour:
   flyTarget: {fileID: 0}
   flyDistance: 60
   flyHeight: 20
+--- !u!114 &-6800637460304631624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751514573297367975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1145517203
+      Data2: 1301162499
+      Data3: -1674566271
+      Data4: -841069801
+    Path: event:/crow-caw-point
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8796677188357082375
 GameObject:
   m_ObjectHideFlags: 0
