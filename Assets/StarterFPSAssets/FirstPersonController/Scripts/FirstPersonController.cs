@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using FMODUnity;
 using FMOD.Studio;
 using UnityEditor.UI;
+using Unity.VisualScripting;
 
 namespace StarterAssets
 {
@@ -31,6 +32,8 @@ namespace StarterAssets
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
 
+		private bool landed;
+		private bool jumped;	
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
 		public float JumpTimeout = 0.1f;
@@ -56,8 +59,12 @@ namespace StarterAssets
 		public float BottomClamp = -90.0f;
 
 		private EventInstance footstepInstance;
+		private EventInstance jumpDirtInstance;
+		private EventInstance landDirtInstance;
 		[Header("FMOD")]
 		[SerializeField] private EventReference _footstepsEvent;
+		[SerializeField] private EventReference _jumpDirtEvent;
+		[SerializeField] private EventReference _landDirtEvent;
 
 
 		// cinemachine
@@ -125,6 +132,8 @@ namespace StarterAssets
 
 			//fmod
 			footstepInstance = RuntimeManager.CreateInstance(_footstepsEvent);
+			jumpDirtInstance = RuntimeManager.CreateInstance(_jumpDirtEvent);
+			landDirtInstance = RuntimeManager.CreateInstance(_landDirtEvent);
 		}
 
 		private void Update()
@@ -134,7 +143,7 @@ namespace StarterAssets
 			Move();
 			if (_stepTimer > 0)
 			{
-				_stepTimer=Mathf.Max(0, _stepTimer -= Time.deltaTime);
+				_stepTimer = Mathf.Max(0, _stepTimer -= Time.deltaTime);
 			}
 			//Debug.Log(_stepTimer);
 		}
@@ -219,11 +228,11 @@ namespace StarterAssets
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 				//fmod
-				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && Grounded && _stepTimer==0)
+				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && PlaybackState(landDirtInstance)!= PLAYBACK_STATE.PLAYING && Grounded && landed && _stepTimer == 0)
 				{
 					footstepInstance.start();
 					_stepTimer = _stepSpeed;
-					Debug.Log("FS Start");
+					//Debug.Log("FS Start");
 				}
 			}
 
@@ -241,6 +250,13 @@ namespace StarterAssets
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
 				{
+					if (!landed)
+					{
+						landDirtInstance.start();
+						Debug.Log("LandSound");
+						landed = true;
+						jumped = false;
+					}
 					_verticalVelocity = -2f;
 				}
 
@@ -250,7 +266,13 @@ namespace StarterAssets
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 					//fmod
-					//footstepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+					if (!jumped)
+					{
+						jumpDirtInstance.start();
+						Debug.Log("JumpSound");
+						jumped = true;
+					}
+					landed = false;
 				}
 
 				// jump timeout

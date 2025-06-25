@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
-    public bool IsTransmitting      { get; private set; }
+    [SerializeField] private Animator jumpScareAnimator;
+
+    public bool IsTransmitting { get; private set; }
     private bool isReceiving        = false;
 
     // FLAG CITY
@@ -70,14 +72,20 @@ public class GameController : MonoBehaviour
     {
         if (!isReceiving)
         {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                PlayJumpScare();
+            }
             if (Input.GetKey(KeyCode.T))
             {
                 IsTransmitting = true;
-                UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+
+                if(Input.GetKeyDown(KeyCode.T)) UIController.Instance.ShowHand(UIController.HandName.Transmitting);
 
                 if (waitingForTransmitAfterDialogue)
                 {
                     transmitHoldTimer += Time.deltaTime;
+                    Debug.Log(transmitHoldTimer);
 
                     if (transmitHoldTimer >= 1f)
                     {
@@ -164,6 +172,19 @@ public class GameController : MonoBehaviour
         _dialogueInstance2.release();
         StartCoroutine(DelayedBoolSet(() => Dialogue2Started = true, 0.2f));
     }
+
+    public void PlayJumpScare()
+    {
+        if (jumpScareAnimator != null)
+        {
+            jumpScareAnimator.SetTrigger("PlayJumpScare");
+        }
+        else
+        {
+            Debug.LogWarning("Jump scare animator not assigned!");
+        }
+    }
+
     
     // --- HELPER FUNCTIONS ---
 
