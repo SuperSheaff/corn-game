@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4074239744484298559
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.41587
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3266594
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -160.02426
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000004470348
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568592434201407133, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fadcc7674a64ee47ba2b36f0570a506, type: 2}
+    - target: {fileID: -4477157855206981642, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ae3e5231758c99409db99af4fc80fa1, type: 2}
+    - target: {fileID: -2834013265095451061, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c08a8dd0ddcee104ab1d9530dd96ad89, type: 2}
+    - target: {fileID: -836442146158925416, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9113645811f28bd4fa7674586db7abae, type: 2}
+    - target: {fileID: 919132149155446097, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: m_Name
+      value: Scarecrow_fallen_pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164996480583612547, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a924c9be59094de41b40b3e09a663d77, type: 2}
+    - target: {fileID: 8917683764665983121, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2595451daf7cf2b4a8be46ba92ddf114, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb23ed165404bfe409caffdb0e02510d, type: 3}
