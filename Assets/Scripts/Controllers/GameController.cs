@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
     {
         if (!isReceiving)
         {
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 PlayJumpScare();
             }

@@ -36,6 +36,9 @@ public class Crow : MonoBehaviour
     //[SerializeField]
     //private EventReference _crowCawEvent;
 
+    private EventInstance flapInstance;
+    [SerializeField] private EventReference _flapReference;
+
     private float cawCountdown = 0;
 
     void Start()
@@ -44,7 +47,8 @@ public class Crow : MonoBehaviour
         animator.SetBool("Flying", false); // Flying
         player = GameObject.FindWithTag("Player").transform;
         //crowCawInstance = RuntimeManager.CreateInstance(_crowCawEvent);
-        crowCawInstance=GetComponent<FMODUnity.StudioEventEmitter>();
+        crowCawInstance = GetComponent<FMODUnity.StudioEventEmitter>();
+        flapInstance = RuntimeManager.CreateInstance(_flapReference);
     }
 
     void Update()
@@ -113,6 +117,7 @@ public class Crow : MonoBehaviour
     {
         animator.SetBool("Idle", false);
         animator.SetBool("Flying", true);
+        Flap();
 
         // Prep destination and arc
         flightStart = transform.position;
@@ -149,5 +154,10 @@ public class Crow : MonoBehaviour
         Debug.Log("Caw");
         SendMessage("Play");
         cawCountdown = Random.Range(1, 5);
+    }
+
+    private void Flap()
+    {
+        flapInstance.start();
     }
 }

@@ -70,6 +70,13 @@ MonoBehaviour:
   flyTarget: {fileID: 0}
   flyDistance: 60
   flyHeight: 20
+  _flapReference:
+    Guid:
+      Data1: 657986197
+      Data2: 1080091775
+      Data3: 1674580355
+      Data4: 1312502970
+    Path: event:/Flap-away
 --- !u!114 &-6800637460304631624
 MonoBehaviour:
   m_ObjectHideFlags: 0
