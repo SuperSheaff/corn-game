@@ -7,6 +7,7 @@ using FMODUnity;
 using FMOD.Studio;
 using UnityEditor.UI;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 namespace StarterAssets
 {
@@ -61,10 +62,13 @@ namespace StarterAssets
 		private EventInstance footstepInstance;
 		private EventInstance jumpDirtInstance;
 		private EventInstance landDirtInstance;
+		private EventInstance atmosInstance;
 		[Header("FMOD")]
+
 		[SerializeField] private EventReference _footstepsEvent;
 		[SerializeField] private EventReference _jumpDirtEvent;
 		[SerializeField] private EventReference _landDirtEvent;
+		[SerializeField] private EventReference _atmosEvent;
 
 
 		// cinemachine
@@ -134,6 +138,8 @@ namespace StarterAssets
 			footstepInstance = RuntimeManager.CreateInstance(_footstepsEvent);
 			jumpDirtInstance = RuntimeManager.CreateInstance(_jumpDirtEvent);
 			landDirtInstance = RuntimeManager.CreateInstance(_landDirtEvent);
+			atmosInstance = RuntimeManager.CreateInstance(_atmosEvent);
+			atmosInstance.start();
 		}
 
 		private void Update()
@@ -145,7 +151,7 @@ namespace StarterAssets
 			{
 				_stepTimer = Mathf.Max(0, _stepTimer -= Time.deltaTime);
 			}
-			//Debug.Log(_stepTimer);
+			atmosInstance.setParameterByName("Height", _controller.transform.position.y/16f);
 		}
 
 		private void LateUpdate()
