@@ -153,7 +153,7 @@ public class Crow : MonoBehaviour
     {
         Debug.Log("Caw");
         SendMessage("Play");
-        cawCountdown = Random.Range(1, 5);
+        cawCountdown = Random.Range(3, 10);
     }
 
     private void Flap()

@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour
     public GameObject HandIdle;
     public GameObject HandReceiving;
     public GameObject HandTransmitting;
+
+    public GameObject RadioTutorialText;
+    public GameObject WalkTutorialText;
     private EventInstance WalkieOnInstance;
     [SerializeField]
     private EventReference _walkieOnEvent;
@@ -19,7 +22,7 @@ public class UIController : MonoBehaviour
     public enum HandName { Idle, Receiving, Transmitting }
 
     //fmod
-    private 
+    private
 
     void Awake()
     {
@@ -34,8 +37,8 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         //fmod
-        WalkieOnInstance = RuntimeManager.CreateInstance(_walkieOnEvent);   
-        WalkieOffInstance = RuntimeManager.CreateInstance(_walkieOffEvent);   
+        WalkieOnInstance = RuntimeManager.CreateInstance(_walkieOnEvent);
+        WalkieOffInstance = RuntimeManager.CreateInstance(_walkieOffEvent);
 
     }
 
@@ -60,5 +63,15 @@ public class UIController : MonoBehaviour
                 WalkieOnInstance.start();
                 break;
         }
+    }
+
+    public void WalkieTutorialText(bool show)
+    {
+        RadioTutorialText.SetActive(show);
+    }
+
+    public void MoveTutorialText(bool show)
+    {
+        WalkTutorialText.SetActive(show);
     }
 }

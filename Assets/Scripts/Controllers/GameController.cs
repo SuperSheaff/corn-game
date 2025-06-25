@@ -2,6 +2,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using System.Collections;
+using System;
 
 
 public class GameController : MonoBehaviour
@@ -13,15 +14,23 @@ public class GameController : MonoBehaviour
     public bool IsTransmitting { get; private set; }
     private bool isReceiving        = false;
 
+    private KeyCode _walkieTalkieButton = KeyCode.Mouse0;
+
     // FLAG CITY
+
+    public bool WalkieTutorialPassed = false;
     public bool Dialogue1Started    = false;
     public bool Dialogue1Finished   = false;
     public bool Dialogue2Started    = false;
     public bool Dialogue2Finished   = false;
+    public bool MovementEnabled     = false;
+    public bool MovementTutorialPassed = false;
 
-    private bool waitingForTransmitAfterDialogue = false;
+    public Action nextScriptedDialogue;
+
+    private bool waitingForTransmitAfterDialogue = true;
     private float transmitHoldTimer = 0f;
-    private bool readyToTriggerDialogue2 = false;
+    private bool readyToTriggerNextDialogue = false;
 
     // DIALOGUE & FMOD CITY
 
@@ -35,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         SetVariables();
 
-        StartCoroutine(DelayedAction(PlayDialogue1, 10f));
+        //StartCoroutine(DelayedAction(PlayDialogue1, 10f));
     }
 
     void Awake()
@@ -52,6 +61,7 @@ public class GameController : MonoBehaviour
     {
         CheckInput();
         CheckDialogue();
+        ShowTutorialText();
     }
 
     public void StartReceiving()
@@ -66,6 +76,28 @@ public class GameController : MonoBehaviour
         UIController.Instance.ShowHand(UIController.HandName.Idle);
     }
 
+    public void ShowTutorialText()
+    {
+        if (!WalkieTutorialPassed)
+        {
+            UIController.Instance.WalkieTutorialText(true);
+        }
+        else
+        {
+            UIController.Instance.WalkieTutorialText(false);
+        }
+        if (Dialogue2Finished && !MovementTutorialPassed)
+        {
+            MovementEnabled = true;
+            UIController.Instance.MoveTutorialText(true);
+        }
+        else if (Dialogue2Finished && MovementTutorialPassed)
+        {
+            MovementEnabled = true;
+            UIController.Instance.MoveTutorialText(false);
+        }
+    }
+
     // --- CHECK FUNCTIONS ---
 
     public void CheckInput()
@@ -76,11 +108,11 @@ public class GameController : MonoBehaviour
             {
                 PlayJumpScare();
             }
-            if (Input.GetKey(KeyCode.T))
+            if (Input.GetKey(_walkieTalkieButton))
             {
                 IsTransmitting = true;
 
-                if(Input.GetKeyDown(KeyCode.T)) UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+                if (Input.GetKeyDown(_walkieTalkieButton)) UIController.Instance.ShowHand(UIController.HandName.Transmitting);
 
                 if (waitingForTransmitAfterDialogue)
                 {
@@ -89,22 +121,22 @@ public class GameController : MonoBehaviour
 
                     if (transmitHoldTimer >= 1f)
                     {
-                        readyToTriggerDialogue2 = true;
+                        readyToTriggerNextDialogue = true;
                     }
                 }
             }
 
-            if (Input.GetKeyUp(KeyCode.T))
+            if (Input.GetKeyUp(_walkieTalkieButton))
             {
-                if (waitingForTransmitAfterDialogue && readyToTriggerDialogue2)
+                if (waitingForTransmitAfterDialogue && readyToTriggerNextDialogue)
                 {
                     // Player held transmit long enough, now released
                     Debug.Log("Transmit released after valid hold — starting Dialogue 2 soon");
-                    StartCoroutine(DelayedAction(PlayDialogue2, 1.5f)); // or whatever delay you want
+                    StartCoroutine(DelayedAction(nextScriptedDialogue, 1.5f)); // or whatever delay you want
 
                     // Clear flags
                     waitingForTransmitAfterDialogue = false;
-                    readyToTriggerDialogue2 = false;
+                    readyToTriggerNextDialogue = false;
                 }
 
                 IsTransmitting = false;
@@ -120,24 +152,35 @@ public class GameController : MonoBehaviour
 
     public void CheckDialogue()
     {
-        // Dialogue 1 Finished
-        if (PlaybackState(_dialogueInstance1) != PLAYBACK_STATE.PLAYING && Dialogue1Started && !Dialogue1Finished)
+        //Walkie Tutorial
+        //if the player has used the walkie for 1 second, enable dialogue 1 to play.
+        if (readyToTriggerNextDialogue && !WalkieTutorialPassed)
         {
-            Debug.Log("Dialogue 1 Finished");
-            Dialogue1Finished = true;
-            StopReceiving();
-
-            // Wait for the player to transmit
-            waitingForTransmitAfterDialogue = true;
+            WalkieTutorialPassed = true;
+            Debug.Log("walkie Tutorial Passed");
             transmitHoldTimer = 0f;
-            Debug.Log("Dialogue 1 Finished — waiting for transmit hold...");
+            nextScriptedDialogue = PlayDialogue1;
         }
+        // Dialogue 1 Finished
+            if (PlaybackState(_dialogueInstance1) != PLAYBACK_STATE.PLAYING && Dialogue1Started && !Dialogue1Finished)
+            {
+                Debug.Log("Dialogue 1 Finished");
+                Dialogue1Finished = true;
+                StopReceiving();
+
+                // Wait for the player to transmit
+                waitingForTransmitAfterDialogue = true;
+                transmitHoldTimer = 0f;
+                Debug.Log("Dialogue 1 Finished — waiting for transmit hold...");
+                nextScriptedDialogue = PlayDialogue2;
+            }
 
         // Dialogue 2 Finished
         if (PlaybackState(_dialogueInstance2) != PLAYBACK_STATE.PLAYING && Dialogue2Started && !Dialogue2Finished)
         {
             Debug.Log("Dialogue 2 Finished");
             Dialogue2Finished = true;
+            MovementEnabled = true;
             StopReceiving();
         }
     }
