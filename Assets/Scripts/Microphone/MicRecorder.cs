@@ -70,7 +70,7 @@ public class MicRecorder : MonoBehaviour {
 		exinfo.numchannels = NumOfChannels;
 		exinfo.format = FMOD.SOUND_FORMAT.PCM16;
 		exinfo.defaultfrequency = SampleRate;
-		exinfo.length = (uint)SampleRate * sizeof(short) * (uint)NumOfChannels;
+		exinfo.length = (uint)SampleRate * sizeof(short) * (uint)NumOfChannels * 10;
 	}
 
 	private void Update() {
