@@ -76,14 +76,16 @@ public class GameController : MonoBehaviour
             {
                 PlayJumpScare();
             }
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKey(KeyCode.T))
             {
                 IsTransmitting = true;
-                UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+
+                if(Input.GetKeyDown(KeyCode.T)) UIController.Instance.ShowHand(UIController.HandName.Transmitting);
 
                 if (waitingForTransmitAfterDialogue)
                 {
                     transmitHoldTimer += Time.deltaTime;
+                    Debug.Log(transmitHoldTimer);
 
                     if (transmitHoldTimer >= 1f)
                     {
