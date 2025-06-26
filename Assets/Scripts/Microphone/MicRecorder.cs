@@ -1,5 +1,6 @@
 using FMODUnity;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 public class MicRecorder : MonoBehaviour {
@@ -88,6 +89,32 @@ public class MicRecorder : MonoBehaviour {
 			FMOD.Sound latestSound = storedSounds[storedSounds.Count - 1];
 			Debug.Log($"Playing. totalSounds: {storedSounds.Count}", gameObject);
 			RuntimeManager.CoreSystem.playSound(latestSound, channelGroup, false, out channel);
+
+			uint length;
+			latestSound.getLength(out length, FMOD.TIMEUNIT.RAWBYTES);
+
+			byte[] buffer = new byte[(int)length];
+			uint read;
+			latestSound.seekData(10);
+			latestSound.readData(buffer, out read);
+
+			Debug.Log($"read length: {read}", gameObject);
+
+			for (int i  = 0; i < 100; i++) {
+
+				//Debug.Log($"buffer: {buffer[i]}", gameObject);
+				
+			}
+		}
+
+		bool channelPlaying;
+		FMOD.RESULT result = channel.isPlaying(out channelPlaying);
+
+		if (result == FMOD.RESULT.OK && channelPlaying) {
+			float audibility = 0;
+			channel.getAudibility(out audibility);
+			Debug.Log($"volume: {audibility}", gameObject);
+
 		}
 	}
 
