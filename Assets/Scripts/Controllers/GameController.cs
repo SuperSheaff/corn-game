@@ -20,13 +20,13 @@ public class GameController : MonoBehaviour
 
     // FLAG CITY
 
-    public bool WalkieTutorialPassed = false;
-    public bool Dialogue1Started    = false;
-    public bool Dialogue1Finished   = false;
-    public bool Dialogue2Started    = false;
-    public bool Dialogue2Finished   = false;
-    public bool MovementEnabled     = false;
-    public bool MovementTutorialPassed = false;
+    public bool WalkieTutorialPassed    = false;
+    public bool Dialogue1Started        = false;
+    public bool Dialogue1Finished       = false;
+    public bool Dialogue2Started        = false;
+    public bool Dialogue2Finished       = false;
+    public bool MovementEnabled         = false;
+    public bool MovementTutorialPassed  = false;
 
 
     private bool waitingForTransmitAfterDialogue = true;

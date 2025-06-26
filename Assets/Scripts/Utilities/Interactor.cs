@@ -6,7 +6,8 @@ public class Interactor : MonoBehaviour
     public LayerMask interactableLayer;
     public KeyCode interactKey = KeyCode.E;
 
-    private Interactable currentTarget;
+    private Interactable currentTarget = null;
+    private Interactable previousTarget = null;
 
     void Update()
     {
@@ -25,11 +26,26 @@ public class Interactor : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactRange, interactableLayer))
         {
-            currentTarget = hit.collider.GetComponent<Interactable>();
+            Interactable newTarget = hit.collider.GetComponent<Interactable>();
+
+            if (newTarget != currentTarget)
+            {
+                if (currentTarget != null)
+                    currentTarget.OnLookAway();
+
+                currentTarget = newTarget;
+
+                if (currentTarget != null)
+                    currentTarget.OnLookAt();
+            }
         }
         else
         {
-            currentTarget = null;
+            if (currentTarget != null)
+            {
+                currentTarget.OnLookAway();
+                currentTarget = null;
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class UIController : MonoBehaviour
     private EventInstance WalkieOffInstance;
     [SerializeField]
     private EventReference _walkieOffEvent;
+
+    public TextMeshProUGUI promptTextUI; // assigned in inspector
 
     public enum HandName { Idle, Receiving, Transmitting }
 
@@ -73,5 +76,16 @@ public class UIController : MonoBehaviour
     public void MoveTutorialText(bool show)
     {
         WalkTutorialText.SetActive(show);
+    }
+
+    public void ShowPrompt(string text)
+    {
+        promptTextUI.text = text;
+        promptTextUI.gameObject.SetActive(true);
+    }
+
+    public void HidePrompt()
+    {
+        promptTextUI.gameObject.SetActive(false);
     }
 }
