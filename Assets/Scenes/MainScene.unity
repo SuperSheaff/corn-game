@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 70416477}
   - component: {fileID: 70416476}
   m_Layer: 0
-  m_Name: Scarecrow standing backlight
+  m_Name: Scarecrow standing underlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27080,7 +27080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3751514573297367975, guid: 889dfe37819c84cd09c5b05c75696974, type: 3}
       propertyPath: m_Name
-      value: Crow
+      value: Crow (post)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

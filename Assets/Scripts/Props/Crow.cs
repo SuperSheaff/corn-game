@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Crow : MonoBehaviour
@@ -32,12 +33,14 @@ public class Crow : MonoBehaviour
     private float delayTimer = 0f;
     private float flyDelay = 0f;
 
-    private Component crowCawInstance;
+    private StudioEventEmitter crowCawInstance;
     //[SerializeField]
     //private EventReference _crowCawEvent;
 
     private EventInstance flapInstance;
     [SerializeField] private EventReference _flapReference;
+
+    private bool _isCawing;
 
     private float cawCountdown = 0;
 
@@ -45,9 +48,10 @@ public class Crow : MonoBehaviour
     {
         animator.SetBool("Idle", true); // Idle
         animator.SetBool("Flying", false); // Flying
+        animator.SetBool("Cawing", false);
         player = GameObject.FindWithTag("Player").transform;
         //crowCawInstance = RuntimeManager.CreateInstance(_crowCawEvent);
-        crowCawInstance = GetComponent<FMODUnity.StudioEventEmitter>();
+        crowCawInstance = GetComponent<StudioEventEmitter>();
         flapInstance = RuntimeManager.CreateInstance(_flapReference);
     }
 
@@ -106,6 +110,8 @@ public class Crow : MonoBehaviour
         {
             Caw();
         }
+        Debug.Log($"{this}{PlaybackState(crowCawInstance.EventInstance)}");
+        if (PlaybackState(crowCawInstance.EventInstance) == PLAYBACK_STATE.PLAYING) animator.SetBool("Cawing", false);
     }
 
     void BeginFlight()
@@ -153,6 +159,7 @@ public class Crow : MonoBehaviour
     {
         Debug.Log("Caw");
         SendMessage("Play");
+        animator.SetBool("Cawing", true);
         cawCountdown = Random.Range(3, 10);
     }
 
@@ -160,4 +167,10 @@ public class Crow : MonoBehaviour
     {
         flapInstance.start();
     }
+    PLAYBACK_STATE PlaybackState(EventInstance instance)
+		{
+			PLAYBACK_STATE pS;
+			instance.getPlaybackState(out pS);
+			return pS;
+		}
 }
