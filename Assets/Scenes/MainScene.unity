@@ -44225,6 +44225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpScareAnimator: {fileID: 1571457297}
+  player: {fileID: 595244844}
   WalkieTutorialPassed: 0
   Dialogue1Started: 0
   Dialogue1Finished: 0

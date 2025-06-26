@@ -3,6 +3,7 @@ using FMODUnity;
 using FMOD.Studio;
 using System.Collections;
 using System;
+using StarterAssets;
 
 
 public class GameController : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
 
     [SerializeField] private Animator jumpScareAnimator;
+    [SerializeField] private GameObject player;
 
     public bool IsTransmitting { get; private set; }
     private bool isReceiving        = false;
@@ -26,11 +28,11 @@ public class GameController : MonoBehaviour
     public bool MovementEnabled     = false;
     public bool MovementTutorialPassed = false;
 
-    public Action nextScriptedDialogue;
 
     private bool waitingForTransmitAfterDialogue = true;
     private float transmitHoldTimer = 0f;
     private bool readyToTriggerNextDialogue = false;
+    private Action nextScriptedDialogue;
 
     // DIALOGUE & FMOD CITY
 
@@ -43,7 +45,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         SetVariables();
-
         //StartCoroutine(DelayedAction(PlayDialogue1, 10f));
     }
 
@@ -162,25 +163,25 @@ public class GameController : MonoBehaviour
             nextScriptedDialogue = PlayDialogue1;
         }
         // Dialogue 1 Finished
-            if (PlaybackState(_dialogueInstance1) != PLAYBACK_STATE.PLAYING && Dialogue1Started && !Dialogue1Finished)
-            {
-                Debug.Log("Dialogue 1 Finished");
-                Dialogue1Finished = true;
-                StopReceiving();
+        if (PlaybackState(_dialogueInstance1) != PLAYBACK_STATE.PLAYING && Dialogue1Started && !Dialogue1Finished)
+        {
+            Debug.Log("Dialogue 1 Finished");
+            Dialogue1Finished = true;
+            StopReceiving();
 
-                // Wait for the player to transmit
-                waitingForTransmitAfterDialogue = true;
-                transmitHoldTimer = 0f;
-                Debug.Log("Dialogue 1 Finished — waiting for transmit hold...");
-                nextScriptedDialogue = PlayDialogue2;
-            }
+            // Wait for the player to transmit
+            waitingForTransmitAfterDialogue = true;
+            transmitHoldTimer = 0f;
+            Debug.Log("Dialogue 1 Finished — waiting for transmit hold...");
+            nextScriptedDialogue = PlayDialogue2;
+        }
 
         // Dialogue 2 Finished
         if (PlaybackState(_dialogueInstance2) != PLAYBACK_STATE.PLAYING && Dialogue2Started && !Dialogue2Finished)
         {
             Debug.Log("Dialogue 2 Finished");
             Dialogue2Finished = true;
-            MovementEnabled = true;
+            player.GetComponent<FirstPersonController>().SetMovementAllowed(true);
             StopReceiving();
         }
     }

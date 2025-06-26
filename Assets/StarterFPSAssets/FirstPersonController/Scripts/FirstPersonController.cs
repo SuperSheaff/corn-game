@@ -34,7 +34,7 @@ namespace StarterAssets
 		public float Gravity = -15.0f;
 
 		private bool landed;
-		private bool jumped;	
+		private bool jumped;
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
 		public float JumpTimeout = 0.1f;
@@ -58,6 +58,8 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+
+		public bool MovementAllowed = false;
 
 		private EventInstance footstepInstance;
 		private EventInstance jumpDirtInstance;
@@ -151,7 +153,7 @@ namespace StarterAssets
 			{
 				_stepTimer = Mathf.Max(0, _stepTimer -= Time.deltaTime);
 			}
-			atmosInstance.setParameterByName("Height", _controller.transform.position.y/16f);
+			atmosInstance.setParameterByName("Height", _controller.transform.position.y / 16f);
 		}
 
 		private void LateUpdate()
@@ -234,7 +236,7 @@ namespace StarterAssets
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 				//fmod
-				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && PlaybackState(landDirtInstance)!= PLAYBACK_STATE.PLAYING && Grounded && landed && _stepTimer == 0)
+				if (PlaybackState(footstepInstance) != PLAYBACK_STATE.PLAYING && PlaybackState(landDirtInstance) != PLAYBACK_STATE.PLAYING && Grounded && landed && _stepTimer == 0)
 				{
 					footstepInstance.start();
 					_stepTimer = _stepSpeed;
@@ -243,7 +245,7 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if (MovementAllowed) _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()
@@ -333,6 +335,10 @@ namespace StarterAssets
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+		public void SetMovementAllowed(bool state)
+		{
+			MovementAllowed = state;
 		}
 	}
 }
