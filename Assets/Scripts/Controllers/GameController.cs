@@ -171,21 +171,21 @@ public class GameController : MonoBehaviour
 
                 if (waitingForTransmitAfterDialogue)
                 {
-                    if (micRecorder != null && micRecorder.IsAvailable) {
-                        if (micRecorder.IsVoice) {
-                            readyToTriggerNextDialogue = true;
-                            Debug.Log($"Tutorial progressed by Voice", gameObject);
-                        }
-                    } else {
-						transmitHoldTimer += Time.deltaTime;
-						Debug.Log(transmitHoldTimer);
+                    //if (micRecorder != null && micRecorder.IsAvailable) {
+                    //    if (micRecorder.IsVoice) {
+                    //        readyToTriggerNextDialogue = true;
+                    //        Debug.Log($"Tutorial progressed by Voice", gameObject);
+                    //    }
+                    //} else {
 
-						if (transmitHoldTimer >= 1f)
-						{
-							readyToTriggerNextDialogue = true;
-						}
+                    //}
+					transmitHoldTimer += Time.deltaTime;
+					Debug.Log(transmitHoldTimer);
 
-                    }
+					if (transmitHoldTimer >= 1f)
+					{
+						readyToTriggerNextDialogue = true;
+					}
                 }
             }
 

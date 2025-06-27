@@ -100,6 +100,13 @@ public class Crow : MonoBehaviour
             {
                 FlyAway();
             }
+
+            if (transmitTimer >= transmitThreshold) {
+				transmitTimer += Time.deltaTime;
+            } else
+			{
+				transmitTimer = 0f;
+			}
         }
 
         cawCountdown -= Time.deltaTime;
