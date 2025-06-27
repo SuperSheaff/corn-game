@@ -5450,7 +5450,7 @@ Transform:
   m_GameObject: {fileID: 226101247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.9, y: 1.49, z: 48.25}
+  m_LocalPosition: {x: 9.264, y: 1.49, z: 46.409}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -48619,6 +48619,7 @@ MonoBehaviour:
   MovementEnabled: 0
   MovementTutorialPassed: 0
   ScareCrow1Finished: 0
+  dialogue4Delay: 5
   _dialogueEvent1:
     Guid:
       Data1: 1288476841
