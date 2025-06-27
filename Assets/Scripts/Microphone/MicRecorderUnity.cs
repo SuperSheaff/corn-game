@@ -44,15 +44,15 @@ public class MicRecorderUnity : MonoBehaviour {
 
 	private void Start() {
 		minDataAvergageThreshold = 0.02f;
-		RecordingDeviceIndex = MicOption;
+		//RecordingDeviceIndex = MicOption;
 		ChooseMicrophone(RecordingDeviceIndex);
 		Debug.Log($"Microphone set to: {RecordingDeviceIndex}: {RecordingDeviceName}", gameObject);
 
 
-		//for (int i = 0; i < dataSize; i++) {
-		//	cubeVisuals.Add(GameObject.CreatePrimitive(PrimitiveType.Cube).transform);
-		//	cubeVisuals[i].position = new Vector3(i, 0, 0);
-		//}
+		for (int i = 0; i < dataSize; i++) {
+			cubeVisuals.Add(GameObject.CreatePrimitive(PrimitiveType.Cube).transform);
+			cubeVisuals[i].position = new Vector3(i, 0, 0);
+		}
 	}
 
 	public void ChooseMicrophone(int micIndex) {
@@ -72,11 +72,11 @@ public class MicRecorderUnity : MonoBehaviour {
 	}
 
 	private void Update() {
-		//if (Input.GetKeyDown(holdToRecord)) {
-		//	StartRecording();
-		//} else if (Input.GetKeyUp(holdToRecord)) {
-		//	StopRecording();
-		//}
+		if (Input.GetKeyDown(holdToRecord)) {
+			StartRecording();
+		} else if (Input.GetKeyUp(holdToRecord)) {
+			StopRecording();
+		}
 
 		if (Input.GetKeyDown(replayRecord)) {
 			source.Play();
@@ -84,9 +84,9 @@ public class MicRecorderUnity : MonoBehaviour {
 
 		if (source.isPlaying) {
 			SampleData();
-			//for (int i = 0; i < data.Length; i++) {
-			//	cubeVisuals[i].localScale = new Vector3(1, data[i] * 1000, 1);
-			//}
+			for (int i = 0; i < data.Length; i++) {
+				cubeVisuals[i].localScale = new Vector3(1, data[i] * 1000, 1);
+			}
 		}
 
 
