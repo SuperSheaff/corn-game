@@ -21177,7 +21177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click the Left Mouse Button and Speak to use the radio.
+  m_text: Click the Left Mouse Button to use the radio.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b01b0a80153484bb38d2069f8ab70e, type: 2}
   m_sharedMaterial: {fileID: -8906820793627392514, guid: 83b01b0a80153484bb38d2069f8ab70e, type: 2}
