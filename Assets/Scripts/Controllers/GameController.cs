@@ -81,6 +81,9 @@ public class GameController : MonoBehaviour
     public GameObject Scene4;
     public GameObject Scene5;
 
+    public Transform teleportDestination; // assign in Inspector
+    public GameObject playerObject;     // assign or find by tag
+
     void Start()
     {
         SetupVariables();
@@ -336,6 +339,9 @@ public class GameController : MonoBehaviour
 
     public void SetupScene5()
     {
+        TeleportPlayerToGround();
+        PlayDialogue8();
+        Scene5.SetActive(true);
         Debug.Log("BIG CROW TOIME");
         // start some dialogue @ oscar
     }
@@ -457,5 +463,14 @@ public class GameController : MonoBehaviour
         PLAYBACK_STATE pS;
         instance.getPlaybackState(out pS);
         return pS;
+    }
+
+    public void TeleportPlayerToGround()
+    {
+        if (playerObject != null && teleportDestination != null)
+        {
+            playerObject.transform.position = teleportDestination.position;
+            playerObject.transform.rotation = teleportDestination.rotation; 
+        }
     }
 }

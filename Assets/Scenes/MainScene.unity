@@ -30683,6 +30683,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4020542405996870241, guid: 535268afe0600a446a04f9113c655c43, type: 3}
   m_PrefabInstance: {fileID: 1236431863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1244226000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244226001}
+  m_Layer: 0
+  m_Name: Scene5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1244226001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244226000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1916685195}
+  m_Father: {fileID: 1731398065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1246304520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41988,7 +42020,8 @@ Transform:
   - {fileID: 386494096}
   - {fileID: 689553888}
   - {fileID: 942709428}
-  - {fileID: 1916685195}
+  - {fileID: 1244226001}
+  - {fileID: 1771763247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1735069752
@@ -43259,6 +43292,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4020542405996870241, guid: 535268afe0600a446a04f9113c655c43, type: 3}
   m_PrefabInstance: {fileID: 1770792069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1771763246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771763247}
+  m_Layer: 0
+  m_Name: TeleportDestination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771763247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771763246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -77.57, y: 0, z: 125.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731398065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1773753333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46478,7 +46542,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1731398065}
+    m_TransformParent: {fileID: 1244226001}
     m_Modifications:
     - target: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: m_Name
@@ -46506,15 +46570,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -48090,7 +48154,9 @@ MonoBehaviour:
     Path: event:/dlg8-get out of the cornfield
   Scene2: {fileID: 689553887}
   Scene4: {fileID: 942709427}
-  Scene5: {fileID: 0}
+  Scene5: {fileID: 1244226000}
+  teleportDestination: {fileID: 1771763247}
+  playerObject: {fileID: 595244844}
 --- !u!1001 &1986637900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52308,6 +52374,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228382, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228382, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_SlopeLimit
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_RootOrder
