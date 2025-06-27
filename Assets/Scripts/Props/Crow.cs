@@ -157,7 +157,7 @@ public class Crow : MonoBehaviour
 
     private void Caw()
     {
-        Debug.Log("Caw");
+        //Debug.Log("Caw");
         SendMessage("Play");
         animator.SetBool("Cawing", true);
         cawCountdown = Random.Range(3, 10);
