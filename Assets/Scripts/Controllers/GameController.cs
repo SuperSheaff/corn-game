@@ -41,7 +41,6 @@ public class GameController : MonoBehaviour
     public bool MovementTutorialPassed  = false;
     public bool ScareCrow1Finished      = false;
 
-
     private bool waitingForTransmitAfterDialogue = true;
     private float transmitHoldTimer = 0f;
     private bool readyToTriggerNextDialogue = false;
@@ -125,12 +124,9 @@ public class GameController : MonoBehaviour
         {
             UIController.Instance.WalkieTutorialText(true);
         }
-        else
-        {
-            UIController.Instance.WalkieTutorialText(false);
-        }
         if (Dialogue2Finished && !MovementTutorialPassed)
         {
+            UIController.Instance.WalkieTutorialText(false);
             MovementEnabled = true;
             UIController.Instance.MoveTutorialText(true);
         }
