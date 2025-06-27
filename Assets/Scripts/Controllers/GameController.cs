@@ -80,6 +80,9 @@ public class GameController : MonoBehaviour
     private EventInstance _dialogueInstance8;
     [SerializeField] private EventReference _dialogueEvent8;
 
+    private EventInstance _droneLowInstance;
+    [SerializeField] private EventReference _droneLowEvent;
+
     // SCENE OBJECT CITY
 
     [Header("Scene Object City")]
@@ -316,6 +319,7 @@ public class GameController : MonoBehaviour
         _dialogueInstance6 = RuntimeManager.CreateInstance(_dialogueEvent6);
         _dialogueInstance7 = RuntimeManager.CreateInstance(_dialogueEvent7);
         _dialogueInstance8 = RuntimeManager.CreateInstance(_dialogueEvent8);
+        _droneLowInstance = RuntimeManager.CreateInstance(_droneLowEvent);
 
         // Flags
         Dialogue1Started    = false;
