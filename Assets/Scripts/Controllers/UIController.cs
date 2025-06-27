@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public GameObject HandIdle;
     public GameObject HandReceiving;
     public GameObject HandTransmitting;
+    public GameObject HandTool;
 
     public GameObject RadioTutorialText;
     public GameObject WalkTutorialText;
@@ -66,6 +67,11 @@ public class UIController : MonoBehaviour
                 WalkieOnInstance.start();
                 break;
         }
+    }
+
+    public void ShowTool(bool value)
+    {
+        HandTool.SetActive(value);
     }
 
     public void WalkieTutorialText(bool show)

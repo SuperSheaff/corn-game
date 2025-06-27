@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     public bool Dialogue2Finished       = false;
     public bool MovementEnabled         = false;
     public bool MovementTutorialPassed  = false;
+    public bool ScareCrow1Finished      = false;
 
 
     private bool waitingForTransmitAfterDialogue = true;
@@ -42,9 +43,15 @@ public class GameController : MonoBehaviour
     private EventInstance _dialogueInstance2;
     [SerializeField] private EventReference _dialogueEvent2;
 
+    // SCENE OBJECT CITY
+
+    public GameObject Scene2;
+    public GameObject Scene4;
+    public GameObject Scene5;
+
     void Start()
     {
-        SetVariables();
+        SetupVariables();
         //StartCoroutine(DelayedAction(PlayDialogue1, 10f));
     }
 
@@ -61,7 +68,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         CheckInput();
-        CheckDialogue();
+        CheckDialogueAndLogic();
         ShowTutorialText();
     }
 
@@ -151,7 +158,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void CheckDialogue()
+    public void CheckDialogueAndLogic()
     {
         //Walkie Tutorial
         //if the player has used the walkie for 1 second, enable dialogue 1 to play.
@@ -184,19 +191,51 @@ public class GameController : MonoBehaviour
             player.GetComponent<FirstPersonController>().SetMovementAllowed(true);
             StopReceiving();
         }
-    }
 
-    public void SetVariables()
+        // if (ScareCrow1Finished)
+        // {
+        //     SetupScene2();
+        //     PlayDialogue3();
+        // }
+    }
+    
+    // --- SETUP FUNCTIONS ---
+
+    public void SetupVariables()
     {
         // FMOD
-        _dialogueInstance1  = RuntimeManager.CreateInstance(_dialogueEvent1);
-        _dialogueInstance2  = RuntimeManager.CreateInstance(_dialogueEvent2);
+        _dialogueInstance1 = RuntimeManager.CreateInstance(_dialogueEvent1);
+        _dialogueInstance2 = RuntimeManager.CreateInstance(_dialogueEvent2);
 
         // Flags
-        Dialogue1Started    = false;
-        Dialogue1Finished   = false;
-        Dialogue2Started    = false;
-        Dialogue2Finished   = false;
+        Dialogue1Started = false;
+        Dialogue1Finished = false;
+        Dialogue2Started = false;
+        Dialogue2Finished = false;
+    }
+
+    public void SetupScene2()
+    {
+        Scene2.SetActive(true);
+        // start some dialogue @ oscar
+    }
+
+    public void SetupScene3()
+    {
+        ScarecrowController.Instance?.SetState(ScarecrowState.Standing);
+        // start some dialogue @ oscar
+    }
+
+    public void SetupScene4()
+    {
+        Scene4.SetActive(true);
+        // start some dialogue @ oscar
+    }
+
+    public void SetupScene5()
+    {
+        Debug.Log("BIG CROW TOIME");
+        // start some dialogue @ oscar
     }
 
     // --- PlAY FUNCTIONS ---
@@ -215,6 +254,16 @@ public class GameController : MonoBehaviour
         _dialogueInstance2.start();
         _dialogueInstance2.release();
         StartCoroutine(DelayedBoolSet(() => Dialogue2Started = true, 0.2f));
+    }
+
+    public void PlayDialogue3()
+    {
+        // StartReceiving();
+        // _dialogueInstance2.start();
+        // _dialogueInstance2.release();
+        // StartCoroutine(DelayedBoolSet(() => Dialogue2Started = true, 0.2f));
+
+        Debug.Log("Dialogue 3");
     }
 
     public void PlayJumpScare()

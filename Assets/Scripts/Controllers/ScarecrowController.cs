@@ -1,7 +1,6 @@
-using FMOD.Studio;
-using FMODUnity;
-using Unity.VisualScripting;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public enum ScarecrowState
 {
@@ -26,6 +25,7 @@ public class ScarecrowController : MonoBehaviour
 
     [Header("State")]
     [SerializeField] private ScarecrowState currentState = ScarecrowState.OnGround;
+    private bool hasEnteredPostState = false;
 
     void Awake()
     {
@@ -39,19 +39,25 @@ public class ScarecrowController : MonoBehaviour
 
     private void Start()
     {
-        // scarecrowCreakInstance = RuntimeManager.CreateInstance(_scarecrowCreakEvent);
         UpdateVisuals();
     }
 
     public void SetState(ScarecrowState newState, bool playSound = true)
     {
+        if (newState == ScarecrowState.OnPost && !hasEnteredPostState)
+        {
+            hasEnteredPostState = true;
+            GameController.Instance?.SetupScene2();
+            Debug.Log("test");
+        }
+
         currentState = newState;
         UpdateVisuals();
     }
 
     private void UpdateVisuals()
     {
-        groundScarecrowMesh.SetActive(currentState == ScarecrowState.OnGround);
+        groundScarecrowMesh.SetActive(currentState  == ScarecrowState.OnGround);
         postScarecrowMesh.SetActive(currentState == ScarecrowState.OnPost);
         standingScarecrowMesh.SetActive(currentState == ScarecrowState.Standing);
     }
