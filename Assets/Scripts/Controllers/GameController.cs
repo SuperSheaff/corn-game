@@ -350,6 +350,7 @@ public class GameController : MonoBehaviour
     public void SetupScene3()
     {
         ScarecrowController.Instance?.SetState(ScarecrowState.Standing);
+        _droneLowInstance.start();
         PlayDialogue5();
     }
 
