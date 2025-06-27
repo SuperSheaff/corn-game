@@ -1,9 +1,10 @@
-using FMODUnity;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class MicRecorderUnity : MonoBehaviour {
+
+	public static int MicOption;
+
 	//public variables
 	[Header("Choose A Microphone")]
 	public int RecordingDeviceIndex = 0;
