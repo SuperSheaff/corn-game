@@ -47552,6 +47552,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7909492208435259045, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: EventStopTrigger
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909492208435259045, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
       propertyPath: OverrideMaxDistance
       value: 200
       objectReference: {fileID: 0}
@@ -47593,7 +47597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  acceleration: 0.5
+  acceleration: 0.1
   maxSpeed: 100
   playerTag: Player
   sceneToLoad: MainMenuScene
