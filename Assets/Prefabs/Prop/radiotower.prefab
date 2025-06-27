@@ -2032,7 +2032,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 405964db24d4011439cb4874f94f2875, type: 2}
     - target: {fileID: 919132149155446097, guid: d005eef213dd07c4cb7586657c795178, type: 3}
       propertyPath: m_Name
-      value: RadioTower
+      value: radiotower
       objectReference: {fileID: 0}
     - target: {fileID: 1424317823058357452, guid: d005eef213dd07c4cb7586657c795178, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2131,7 +2131,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 01704aaf3fd831542bf7aba8c4fc0119, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2438613234961334168, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 3105817304276991423, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 6705696659604364451, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -8191513493075484821, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 5802010644010057016, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -733503162746551146, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -2624626353427710196, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -7578064510837600689, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 8127207821691684437, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -4441230611171445595, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -8981816857844824065, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -8483824387782172118, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: -5107691728171968464, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 4268657108733007494, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 6780669137850964830, guid: d005eef213dd07c4cb7586657c795178, type: 3}
+    - {fileID: 2681136354159766625, guid: d005eef213dd07c4cb7586657c795178, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d005eef213dd07c4cb7586657c795178, type: 3}
       insertIndex: -1
