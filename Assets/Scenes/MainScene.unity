@@ -32308,6 +32308,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4020542405996870241, guid: 535268afe0600a446a04f9113c655c43, type: 3}
   m_PrefabInstance: {fileID: 1271816900}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1280523107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2405560882789228394, guid: ce129452bcf20b845985b34094e7b889, type: 3}
+  m_PrefabInstance: {fileID: 1303190049053492406}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0458fcd2e0d464b85ef9852d709fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &1281043190 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 5393215578589016640, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -49021,6 +49032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpScareAnimator: {fileID: 1571457297}
   player: {fileID: 595244844}
+  micRecorder: {fileID: 1280523107}
   WalkieTutorialPassed: 0
   Dialogue1Started: 0
   Dialogue1Finished: 0
@@ -49098,6 +49110,13 @@ MonoBehaviour:
       Data3: -1241303662
       Data4: 1231891642
     Path: event:/dlg8-get out of the cornfield
+  _droneLowEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Scene2: {fileID: 689553887}
   Scene4: {fileID: 942709427}
   Scene5: {fileID: 1244226000}

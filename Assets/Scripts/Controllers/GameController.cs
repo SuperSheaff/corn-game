@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     private KeyCode _walkieTalkieButton = KeyCode.Mouse0;
 
-    private MicRecorderUnity micRecorder;
+    public MicRecorderUnity micRecorder;
 
     // FLAG CITY
 
