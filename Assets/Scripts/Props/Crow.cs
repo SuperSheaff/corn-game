@@ -101,8 +101,9 @@ public class Crow : MonoBehaviour
                 FlyAway();
             }
 
+			transmitTimer += Time.deltaTime;
             if (transmitTimer >= transmitThreshold) {
-				transmitTimer += Time.deltaTime;
+                FlyAway();
             } else
 			{
 				transmitTimer = 0f;
