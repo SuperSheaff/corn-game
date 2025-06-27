@@ -41988,6 +41988,7 @@ Transform:
   - {fileID: 386494096}
   - {fileID: 689553888}
   - {fileID: 942709428}
+  - {fileID: 1916685195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1735069752
@@ -46471,6 +46472,127 @@ Transform:
   - {fileID: 814788839}
   m_Father: {fileID: 1623445304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1916685194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1731398065}
+    m_Modifications:
+    - target: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_Name
+      value: BIG CROW
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 126.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909492208435259045, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909492208435259045, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1916685197}
+    - targetCorrespondingSourceObject: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1916685200}
+  m_SourcePrefab: {fileID: 100100000, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+--- !u!4 &1916685195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6726589983895283306, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+  m_PrefabInstance: {fileID: 1916685194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1916685196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1043872364431118832, guid: c39ae96c3fe784deab1d2758a28dc168, type: 3}
+  m_PrefabInstance: {fileID: 1916685194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1916685197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916685196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756fc44f299644863a4847dcfe60014a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 16
+  playerTag: Player
+  sceneToLoad: MainMenuScene
+--- !u!65 &1916685200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916685196}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.9557095, y: 2.883643, z: 1}
+  m_Center: {x: -0.08730221, y: 0.94182146, z: 0}
 --- !u!1001 &1917938778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47895,6 +48017,18 @@ MonoBehaviour:
   Dialogue1Finished: 0
   Dialogue2Started: 0
   Dialogue2Finished: 0
+  Dialogue3Started: 0
+  Dialogue3Finished: 0
+  Dialogue4Started: 0
+  Dialogue4Finished: 0
+  Dialogue5Started: 0
+  Dialogue5Finished: 0
+  Dialogue6Started: 0
+  Dialogue6Finished: 0
+  Dialogue7Started: 0
+  Dialogue7Finished: 0
+  Dialogue8Started: 0
+  Dialogue8Finished: 0
   MovementEnabled: 0
   MovementTutorialPassed: 0
   ScareCrow1Finished: 0
@@ -47904,14 +48038,56 @@ MonoBehaviour:
       Data2: 1254309629
       Data3: -232074065
       Data4: 569284496
-    Path: event:/dlg-Found radio
+    Path: event:/dlg1-found radio
   _dialogueEvent2:
     Guid:
       Data1: 1353378118
       Data2: 1219488898
       Data3: 1557338005
       Data4: 238666613
-    Path: event:/dlg-check on otto 1
+    Path: event:/dlg2-check on otto 1
+  _dialogueEvent3:
+    Guid:
+      Data1: -810924265
+      Data2: 1127092431
+      Data3: 974474931
+      Data4: 970470716
+    Path: event:/dlg3-otto up
+  _dialogueEvent4:
+    Guid:
+      Data1: -627860923
+      Data2: 1198153133
+      Data3: -119479650
+      Data4: -1912658014
+    Path: event:/dlg4-get me pliers
+  _dialogueEvent5:
+    Guid:
+      Data1: -434820016
+      Data2: 1094565979
+      Data3: -511684428
+      Data4: -1706849474
+    Path: event:/dlg5-check on otto 2
+  _dialogueEvent6:
+    Guid:
+      Data1: -883321170
+      Data2: 1124852041
+      Data3: 143036596
+      Data4: 1570482976
+    Path: event:/dlg6-you still out there
+  _dialogueEvent7:
+    Guid:
+      Data1: -1887592083
+      Data2: 1267744237
+      Data3: 2030678462
+      Data4: -1890009592
+    Path: event:/dlg7-Fix the radio tower
+  _dialogueEvent8:
+    Guid:
+      Data1: 1962244721
+      Data2: 1173989350
+      Data3: -1241303662
+      Data4: 1231891642
+    Path: event:/dlg8-get out of the cornfield
   Scene2: {fileID: 689553887}
   Scene4: {fileID: 942709427}
   Scene5: {fileID: 0}
