@@ -48,6 +48,8 @@ public class GameController : MonoBehaviour
 
     private int _scareSelector;
 
+    [SerializeField] private float dialogue4Delay = 5f; // Set in Inspector
+
     // DIALOGUE & FMOD CITY
 
     private EventInstance _dialogueInstance1;
@@ -229,7 +231,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Dialogue 3 Finished");
             Dialogue3Finished = true;
             StopReceiving();
-            PlayDialogue4();
+            StartCoroutine(PlayDialogue4AfterDelay(dialogue4Delay));
         }
 
         // Dialogue 4 Finished
@@ -437,6 +439,12 @@ public class GameController : MonoBehaviour
         {
             Debug.LogWarning("Jump scare animator not assigned!");
         }
+    }
+    
+    private IEnumerator PlayDialogue4AfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayDialogue4();
     }
 
     
