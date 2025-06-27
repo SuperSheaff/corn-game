@@ -24,6 +24,19 @@ public class GameController : MonoBehaviour
     public bool Dialogue1Finished       = false;
     public bool Dialogue2Started        = false;
     public bool Dialogue2Finished       = false;
+    public bool Dialogue3Started        = false;
+    public bool Dialogue3Finished       = false;
+    public bool Dialogue4Started        = false;
+    public bool Dialogue4Finished       = false;
+    public bool Dialogue5Started        = false;
+    public bool Dialogue5Finished       = false;
+    public bool Dialogue6Started        = false;
+    public bool Dialogue6Finished       = false;
+    public bool Dialogue7Started        = false;
+    public bool Dialogue7Finished       = false;
+    public bool Dialogue8Started        = false;
+    public bool Dialogue8Finished       = false;
+
     public bool MovementEnabled         = false;
     public bool MovementTutorialPassed  = false;
     public bool ScareCrow1Finished      = false;
@@ -44,6 +57,24 @@ public class GameController : MonoBehaviour
     private EventInstance _dialogueInstance2;
     [SerializeField] private EventReference _dialogueEvent2;
 
+    private EventInstance _dialogueInstance3;
+    [SerializeField] private EventReference _dialogueEvent3;
+
+    private EventInstance _dialogueInstance4;
+    [SerializeField] private EventReference _dialogueEvent4;
+
+    private EventInstance _dialogueInstance5;
+    [SerializeField] private EventReference _dialogueEvent5;
+
+    private EventInstance _dialogueInstance6;
+    [SerializeField] private EventReference _dialogueEvent6;
+
+    private EventInstance _dialogueInstance7;
+    [SerializeField] private EventReference _dialogueEvent7;
+
+    private EventInstance _dialogueInstance8;
+    [SerializeField] private EventReference _dialogueEvent8;
+    
     // SCENE OBJECT CITY
 
     public GameObject Scene2;
@@ -193,6 +224,56 @@ public class GameController : MonoBehaviour
             StopReceiving();
         }
 
+        // Dialogue 3 Finished
+        if (PlaybackState(_dialogueInstance3) != PLAYBACK_STATE.PLAYING && Dialogue3Started && !Dialogue3Finished)
+        {
+            Debug.Log("Dialogue 3 Finished");
+            Dialogue3Finished = true;
+            StopReceiving();
+            PlayDialogue4();
+        }
+
+        // Dialogue 4 Finished
+        if (PlaybackState(_dialogueInstance4) != PLAYBACK_STATE.PLAYING && Dialogue4Started && !Dialogue4Finished)
+        {
+            Debug.Log("Dialogue 4 Finished");
+            Dialogue4Finished = true;
+            StopReceiving();
+        }
+
+        // Dialogue 5 Finished
+        if (PlaybackState(_dialogueInstance5) != PLAYBACK_STATE.PLAYING && Dialogue5Started && !Dialogue5Finished)
+        {
+            Debug.Log("Dialogue 5 Finished");
+            Dialogue5Finished = true;
+            StopReceiving();
+        }
+
+        // Dialogue 6 Finished
+        if (PlaybackState(_dialogueInstance6) != PLAYBACK_STATE.PLAYING && Dialogue6Started && !Dialogue6Finished)
+        {
+            Debug.Log("Dialogue 6 Finished");
+            Dialogue6Finished = true;
+            StopReceiving();
+            PlayDialogue7();
+        }
+
+        // Dialogue 7 Finished
+        if (PlaybackState(_dialogueInstance7) != PLAYBACK_STATE.PLAYING && Dialogue7Started && !Dialogue7Finished)
+        {
+            Debug.Log("Dialogue 7 Finished");
+            Dialogue7Finished = true;
+            StopReceiving();
+        }
+
+        // Dialogue 8 Finished
+        if (PlaybackState(_dialogueInstance8) != PLAYBACK_STATE.PLAYING && Dialogue8Started && !Dialogue8Finished)
+        {
+            Debug.Log("Dialogue 8 Finished");
+            Dialogue7Finished = true;
+            StopReceiving();
+        }
+
         // if (ScareCrow1Finished)
         // {
         //     SetupScene2();
@@ -207,29 +288,49 @@ public class GameController : MonoBehaviour
         // FMOD
         _dialogueInstance1 = RuntimeManager.CreateInstance(_dialogueEvent1);
         _dialogueInstance2 = RuntimeManager.CreateInstance(_dialogueEvent2);
+        _dialogueInstance3 = RuntimeManager.CreateInstance(_dialogueEvent3);
+        _dialogueInstance4 = RuntimeManager.CreateInstance(_dialogueEvent4);
+        _dialogueInstance5 = RuntimeManager.CreateInstance(_dialogueEvent5);
+        _dialogueInstance6 = RuntimeManager.CreateInstance(_dialogueEvent6);
+        _dialogueInstance7 = RuntimeManager.CreateInstance(_dialogueEvent7);
+        _dialogueInstance8 = RuntimeManager.CreateInstance(_dialogueEvent8);
 
         // Flags
-        Dialogue1Started = false;
-        Dialogue1Finished = false;
-        Dialogue2Started = false;
-        Dialogue2Finished = false;
+        Dialogue1Started    = false;
+        Dialogue1Finished   = false;
+        Dialogue2Started    = false;
+        Dialogue2Finished   = false;
+        Dialogue3Started    = false;
+        Dialogue3Finished   = false;
+        Dialogue4Started    = false;
+        Dialogue4Finished   = false;
+        Dialogue5Started    = false;
+        Dialogue5Finished   = false;
+        Dialogue6Started    = false;
+        Dialogue6Finished   = false;
+        Dialogue7Started    = false;
+        Dialogue7Finished   = false;
+        Dialogue8Started    = false;
+        Dialogue8Finished   = false;
+
     }
 
     public void SetupScene2()
     {
         Scene2.SetActive(true);
-        // start some dialogue @ oscar
+        PlayDialogue3();
     }
 
     public void SetupScene3()
     {
         ScarecrowController.Instance?.SetState(ScarecrowState.Standing);
-        // start some dialogue @ oscar
+        PlayDialogue5();
     }
 
     public void SetupScene4()
     {
         Scene4.SetActive(true);
+        PlayDialogue6();
         // start some dialogue @ oscar
     }
 
@@ -259,12 +360,50 @@ public class GameController : MonoBehaviour
 
     public void PlayDialogue3()
     {
-        // StartReceiving();
-        // _dialogueInstance2.start();
-        // _dialogueInstance2.release();
-        // StartCoroutine(DelayedBoolSet(() => Dialogue2Started = true, 0.2f));
+        StartReceiving();
+        _dialogueInstance3.start();
+        _dialogueInstance3.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue3Started = true, 0.2f));
+    }
 
-        Debug.Log("Dialogue 3");
+    public void PlayDialogue4()
+    {
+        StartReceiving();
+        _dialogueInstance4.start();
+        _dialogueInstance4.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue4Started = true, 0.2f));
+    }
+
+    public void PlayDialogue5()
+    {
+        StartReceiving();
+        _dialogueInstance5.start();
+        _dialogueInstance5.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue5Started = true, 0.2f));
+    }
+
+    public void PlayDialogue6()
+    {
+        StartReceiving();
+        _dialogueInstance6.start();
+        _dialogueInstance6.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue6Started = true, 0.2f));
+    }
+
+    public void PlayDialogue7()
+    {
+        StartReceiving();
+        _dialogueInstance7.start();
+        _dialogueInstance7.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue7Started = true, 0.2f));
+    }
+
+    public void PlayDialogue8()
+    {
+        StartReceiving();
+        _dialogueInstance8.start();
+        _dialogueInstance8.release();
+        StartCoroutine(DelayedBoolSet(() => Dialogue8Started = true, 0.2f));
     }
 
     public void PlayJumpScare()

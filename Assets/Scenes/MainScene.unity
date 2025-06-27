@@ -25582,7 +25582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1006035343
 Transform:
   m_ObjectHideFlags: 0
@@ -47890,28 +47890,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpScareAnimator: {fileID: 1571457297}
   player: {fileID: 595244844}
-  WalkieTutorialPassed: 1
-  Dialogue1Started: 1
-  Dialogue1Finished: 1
-  Dialogue2Started: 1
-  Dialogue2Finished: 1
-  MovementEnabled: 1
-  MovementTutorialPassed: 1
-  ScareCrow1Finished: 1
+  WalkieTutorialPassed: 0
+  Dialogue1Started: 0
+  Dialogue1Finished: 0
+  Dialogue2Started: 0
+  Dialogue2Finished: 0
+  MovementEnabled: 0
+  MovementTutorialPassed: 0
+  ScareCrow1Finished: 0
   _dialogueEvent1:
     Guid:
       Data1: 1288476841
       Data2: 1254309629
       Data3: -232074065
       Data4: 569284496
-    Path: event:/dlg-intro 1
+    Path: event:/dlg-Found radio
   _dialogueEvent2:
     Guid:
       Data1: 1353378118
       Data2: 1219488898
       Data3: 1557338005
       Data4: 238666613
-    Path: event:/dlg-intro2
+    Path: event:/dlg-check on otto 1
   Scene2: {fileID: 689553887}
   Scene4: {fileID: 942709427}
   Scene5: {fileID: 0}
@@ -50471,7 +50471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &2091894184
 TerrainCollider:
   m_ObjectHideFlags: 0
