@@ -2,6 +2,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class UIController : MonoBehaviour
 
     public enum HandName { Idle, Receiving, Transmitting }
 
+    [SerializeField] private Image fadeImage;      // Fullscreen black image
+    [SerializeField] private float fadeDuration = 2f;
+    private Coroutine currentFade;
+
     //fmod
     private
 
@@ -40,10 +45,13 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        fadeImage.gameObject.SetActive(true);
+
         //fmod
         WalkieOnInstance = RuntimeManager.CreateInstance(_walkieOnEvent);
         WalkieOffInstance = RuntimeManager.CreateInstance(_walkieOffEvent);
 
+        FadeFromBlack();
     }
 
     public void ShowHand(HandName hand)
@@ -93,5 +101,39 @@ public class UIController : MonoBehaviour
     public void HidePrompt()
     {
         promptTextUI.gameObject.SetActive(false);
+    }
+
+    public void FadeFromBlack()
+    {
+        if (currentFade != null) StopCoroutine(currentFade);
+        fadeImage.gameObject.SetActive(true);
+        currentFade = StartCoroutine(FadeRoutine(Color.black, new Color(0, 0, 0, 0)));
+    }
+
+    public void FadeToBlack()
+    {
+        if (currentFade != null) StopCoroutine(currentFade);
+        fadeImage.gameObject.SetActive(true);
+        currentFade = StartCoroutine(FadeRoutine(new Color(0, 0, 0, 0), Color.black));
+    }
+
+    private System.Collections.IEnumerator FadeRoutine(Color startColor, Color endColor)
+    {
+        float timer = 0f;
+
+        fadeImage.color = startColor;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / fadeDuration);
+            fadeImage.color = Color.Lerp(startColor, endColor, t);
+            yield return null;
+        }
+
+        fadeImage.color = endColor;
+
+        if (endColor.a == 0f)
+            fadeImage.gameObject.SetActive(false); // Hide if fully transparent
     }
 }
