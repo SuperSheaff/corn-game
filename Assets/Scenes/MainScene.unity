@@ -5561,6 +5561,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PromptText: Press E to pickup
+  _plierStingerEvent:
+    Guid:
+      Data1: 308409552
+      Data2: 1207576323
+      Data3: 961369019
+      Data4: 1841524138
+    Path: event:/stinger-2
 --- !u!114 &226101253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18812,6 +18819,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2203811708656822978, guid: 7c85f0d625feb3448bba3773d1f0478e, type: 3}
   m_PrefabInstance: {fileID: 1678799743}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &733647384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733647383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1272163619
+      Data2: 1135319430
+      Data3: -1217555540
+      Data4: 1577746561
+    Path: event:/scarecrow-interact
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 0
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 200
 --- !u!1001 &738636601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41254,7 +41292,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2203811708656822978, guid: 7c85f0d625feb3448bba3773d1f0478e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 733647384}
   m_SourcePrefab: {fileID: 100100000, guid: 7c85f0d625feb3448bba3773d1f0478e, type: 3}
 --- !u!1001 &1682029535
 PrefabInstance:
