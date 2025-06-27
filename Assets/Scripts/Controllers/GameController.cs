@@ -5,7 +5,6 @@ using System.Collections;
 using System;
 using StarterAssets;
 
-
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
@@ -20,19 +19,21 @@ public class GameController : MonoBehaviour
 
     // FLAG CITY
 
-    public bool WalkieTutorialPassed = false;
-    public bool Dialogue1Started    = false;
-    public bool Dialogue1Finished   = false;
-    public bool Dialogue2Started    = false;
-    public bool Dialogue2Finished   = false;
-    public bool MovementEnabled     = false;
-    public bool MovementTutorialPassed = false;
+    public bool WalkieTutorialPassed    = false;
+    public bool Dialogue1Started        = false;
+    public bool Dialogue1Finished       = false;
+    public bool Dialogue2Started        = false;
+    public bool Dialogue2Finished       = false;
+    public bool MovementEnabled         = false;
+    public bool MovementTutorialPassed  = false;
 
 
     private bool waitingForTransmitAfterDialogue = true;
     private float transmitHoldTimer = 0f;
     private bool readyToTriggerNextDialogue = false;
     private Action nextScriptedDialogue;
+
+    private int _scareSelector;
 
     // DIALOGUE & FMOD CITY
 
@@ -219,8 +220,27 @@ public class GameController : MonoBehaviour
 
     public void PlayJumpScare()
     {
+        _scareSelector = UnityEngine.Random.Range(1,4);
         if (jumpScareAnimator != null)
         {
+            switch (_scareSelector)
+            {
+                case 1:
+                    jumpScareAnimator.SetBool("Select V", true);
+                    jumpScareAnimator.SetBool("Select H", false);
+                    jumpScareAnimator.SetBool("Select -H", false);
+                    break;
+                case 2:
+                    jumpScareAnimator.SetBool("Select V", false);
+                    jumpScareAnimator.SetBool("Select H", true);
+                    jumpScareAnimator.SetBool("Select -H", false);
+                    break;
+                case 3:
+                    jumpScareAnimator.SetBool("Select V", false);
+                    jumpScareAnimator.SetBool("Select H", false);
+                    jumpScareAnimator.SetBool("Select -H", true);
+                    break;
+            }
             jumpScareAnimator.SetTrigger("PlayJumpScare");
         }
         else

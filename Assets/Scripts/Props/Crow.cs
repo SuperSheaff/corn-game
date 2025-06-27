@@ -110,7 +110,7 @@ public class Crow : MonoBehaviour
         {
             Caw();
         }
-        Debug.Log($"{this}{PlaybackState(crowCawInstance.EventInstance)}");
+        //Debug.Log($"{this}{PlaybackState(crowCawInstance.EventInstance)}");
         if (PlaybackState(crowCawInstance.EventInstance) == PLAYBACK_STATE.PLAYING) animator.SetBool("Cawing", false);
     }
 
