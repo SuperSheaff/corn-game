@@ -20,8 +20,8 @@ public class ScarecrowController : MonoBehaviour
     [SerializeField] private GameObject standingScarecrowMesh;
 
     [Header("FMOD")]
-    [SerializeField] private EventReference _scarecrowCreakEvent;
-    private EventInstance scarecrowCreakInstance;
+    //[SerializeField] private EventReference _scarecrowStingEvent;
+    //private EventInstance scarecrowStingInstance;
 
     [Header("State")]
     [SerializeField] private ScarecrowState currentState = ScarecrowState.OnGround;
@@ -40,6 +40,7 @@ public class ScarecrowController : MonoBehaviour
     private void Start()
     {
         UpdateVisuals();
+        //scarecrowStingInstance = RuntimeManager.CreateInstance(_scarecrowStingEvent);
     }
 
     public void SetState(ScarecrowState newState, bool playSound = true)
