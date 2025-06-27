@@ -47592,9 +47592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756fc44f299644863a4847dcfe60014a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 1
   acceleration: 0.5
-  maxSpeed: 10
+  maxSpeed: 100
   playerTag: Player
   sceneToLoad: MainMenuScene
 --- !u!65 &1916685200
@@ -53424,7 +53424,7 @@ PrefabInstance:
       objectReference: {fileID: 2091894185}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
-      value: 18
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: RotationSpeed
