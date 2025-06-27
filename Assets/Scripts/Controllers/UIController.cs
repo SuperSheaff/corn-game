@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour
         {
             case HandName.Idle:
                 HandIdle.SetActive(true);
+                WalkieOnInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 WalkieOffInstance.start();
                 break;
             case HandName.Receiving:
