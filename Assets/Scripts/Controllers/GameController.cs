@@ -469,4 +469,9 @@ public class GameController : MonoBehaviour
             playerObject.transform.rotation = teleportDestination.rotation; 
         }
     }
+
+    public void MovementTutorialTrigger()
+    {
+        MovementTutorialPassed = true;
+    }
 }

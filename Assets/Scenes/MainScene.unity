@@ -5561,6 +5561,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PromptText: Press E to pickup
+  _plierStingerEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &226101253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42475,6 +42482,7 @@ Transform:
   - {fileID: 1244226001}
   - {fileID: 1771763247}
   - {fileID: 49321500}
+  - {fileID: 2120822033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1735069752
@@ -51975,6 +51983,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3975838289147567178, guid: 71945c7dbcbdb4bd18a58f78ff959459, type: 3}
   m_PrefabInstance: {fileID: 2118678734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2120822032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120822033}
+  - component: {fileID: 2120822035}
+  - component: {fileID: 2120822034}
+  m_Layer: 0
+  m_Name: MovementTutorialPassed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120822033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120822032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731398065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2120822034
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120822032}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2120822035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120822032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16a328ae742541b5a8d574fa37de55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  oneTime: 1
 --- !u!1001 &2123901937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53032,6 +53108,10 @@ PrefabInstance:
     - target: {fileID: 3333264244755683, guid: ae1076e599ff24824aa1ebe17ff2fcfe, type: 3}
       propertyPath: m_Name
       value: JumpScareTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333264244755683, guid: ae1076e599ff24824aa1ebe17ff2fcfe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2776087526622618948, guid: ae1076e599ff24824aa1ebe17ff2fcfe, type: 3}
       propertyPath: m_LocalPosition.x
