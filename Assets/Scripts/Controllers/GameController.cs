@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour
 
     public Transform teleportDestination; // assign in Inspector
     public GameObject playerObject;     // assign or find by tag
+    public GameObject radioTowerColliders;     // assign or find by tag
 
     void Start()
     {
@@ -471,6 +472,8 @@ public class GameController : MonoBehaviour
 
     public void TeleportPlayerToGround()
     {
+        radioTowerColliders.SetActive(false);
+
         if (playerObject != null && teleportDestination != null)
         {
             playerObject.transform.position = teleportDestination.position;

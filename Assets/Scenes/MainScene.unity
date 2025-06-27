@@ -17011,6 +17011,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7550227636560993187, guid: c807a07845a666f449473c92e3883756, type: 3}
   m_PrefabInstance: {fileID: 638244359}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &638244361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6251006041580460604, guid: c807a07845a666f449473c92e3883756, type: 3}
+  m_PrefabInstance: {fileID: 638244359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &638366939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48681,6 +48686,7 @@ MonoBehaviour:
   Scene5: {fileID: 1244226000}
   teleportDestination: {fileID: 1771763247}
   playerObject: {fileID: 595244844}
+  radioTowerColliders: {fileID: 638244361}
 --- !u!1001 &1986637900
 PrefabInstance:
   m_ObjectHideFlags: 0
