@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class ScarecrowDasher : MonoBehaviour
 {
@@ -7,6 +9,14 @@ public class ScarecrowDasher : MonoBehaviour
     public string playerTag = "Player";   // Trigger detection tag
 
     private bool isDashing = false;
+
+    private EventInstance scarecrowDashSting;
+    [SerializeField] private EventReference _scarecrowDashSting;
+
+    private void Start()
+    {
+        scarecrowDashSting = RuntimeManager.CreateInstance(_scarecrowDashSting);
+    }
 
     void Update()
     {
@@ -26,6 +36,7 @@ public class ScarecrowDasher : MonoBehaviour
         if (!isDashing && other.CompareTag(playerTag))
         {
             isDashing = true;
+            scarecrowDashSting.start();
             GameController.Instance?.SetupScene4();
         }
     }
