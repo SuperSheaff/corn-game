@@ -8,6 +8,7 @@ public class RadioTowerInteractable : Interactable
     {
         gameObject.SetActive(false);
         GameController.Instance?.SetupScene5();
+        UIController.Instance?.ShowTool(false);
     }
 
     public override void OnLookAt()

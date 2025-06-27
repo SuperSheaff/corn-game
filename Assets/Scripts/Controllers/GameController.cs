@@ -44,13 +44,14 @@ public class GameController : MonoBehaviour
     public bool MovementTutorialPassed  = false;
     public bool ScareCrow1Finished      = false;
 
-
     private bool waitingForTransmitAfterDialogue = true;
     private float transmitHoldTimer = 0f;
     private bool readyToTriggerNextDialogue = false;
     private Action nextScriptedDialogue;
 
     private int _scareSelector;
+
+    [SerializeField] private float dialogue4Delay = 5f; // Set in Inspector
 
     // DIALOGUE & FMOD CITY
 
@@ -88,6 +89,7 @@ public class GameController : MonoBehaviour
 
     public Transform teleportDestination; // assign in Inspector
     public GameObject playerObject;     // assign or find by tag
+    public GameObject radioTowerColliders;     // assign or find by tag
 
     void Start()
     {
@@ -132,12 +134,9 @@ public class GameController : MonoBehaviour
         {
             UIController.Instance.WalkieTutorialText(true);
         }
-        else
-        {
-            UIController.Instance.WalkieTutorialText(false);
-        }
         if (Dialogue2Finished && !MovementTutorialPassed)
         {
+            UIController.Instance.WalkieTutorialText(false);
             MovementEnabled = true;
             UIController.Instance.MoveTutorialText(true);
         }
@@ -253,7 +252,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Dialogue 3 Finished");
             Dialogue3Finished = true;
             StopReceiving();
-            PlayDialogue4();
+            StartCoroutine(PlayDialogue4AfterDelay(dialogue4Delay));
         }
 
         // Dialogue 4 Finished
@@ -462,6 +461,12 @@ public class GameController : MonoBehaviour
             Debug.LogWarning("Jump scare animator not assigned!");
         }
     }
+    
+    private IEnumerator PlayDialogue4AfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayDialogue4();
+    }
 
     
     // --- HELPER FUNCTIONS ---
@@ -487,10 +492,17 @@ public class GameController : MonoBehaviour
 
     public void TeleportPlayerToGround()
     {
+        radioTowerColliders.SetActive(false);
+
         if (playerObject != null && teleportDestination != null)
         {
             playerObject.transform.position = teleportDestination.position;
             playerObject.transform.rotation = teleportDestination.rotation; 
         }
+    }
+
+    public void MovementTutorialTrigger()
+    {
+        MovementTutorialPassed = true;
     }
 }

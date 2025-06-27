@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class BigCrow : MonoBehaviour
 {
-    public float moveSpeed      = 16f;
+    public float moveSpeed      = 1f;
+    public float acceleration   = 0.5f;
+    public float maxSpeed       = 10f;
     public string playerTag     = "Player";
     public string sceneToLoad   = "MainMenuScene"; // Replace with your scene name
 
@@ -25,6 +27,10 @@ public class BigCrow : MonoBehaviour
     void Update()
     {
         if (player == null) return;
+
+        // Increase speed over time
+        moveSpeed += acceleration * Time.deltaTime;
+        moveSpeed = Mathf.Min(moveSpeed, maxSpeed);
 
         // Move toward player
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
