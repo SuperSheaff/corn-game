@@ -110,9 +110,9 @@ public class MicRecorderUnity : MonoBehaviour {
 	}
 
 	public void StartRecording() {
-		AudioClip newClip = Microphone.Start(RecordingDeviceName, true, 10, 44100);
+		source.clip = Microphone.Start(RecordingDeviceName, true, 10, 44100);
 
-		source.clip = newClip;
+		//source.clip = newClip;
 		source.Play();
 	}
 
