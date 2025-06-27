@@ -48,6 +48,7 @@ public class MicRecorderUnity : MonoBehaviour {
 		ChooseMicrophone(RecordingDeviceIndex);
 		Debug.Log($"Microphone set to: {RecordingDeviceIndex}: {RecordingDeviceName}", gameObject);
 
+		data = new float[dataSize];
 
 		for (int i = 0; i < dataSize; i++) {
 			cubeVisuals.Add(GameObject.CreatePrimitive(PrimitiveType.Cube).transform);
@@ -94,7 +95,6 @@ public class MicRecorderUnity : MonoBehaviour {
 	}
 
 	private void SampleData() {
-		data = new float[dataSize];
 		source.GetOutputData(data, 0);
 
 		//Debug.Log($"Sampling data:", gameObject);
