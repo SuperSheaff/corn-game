@@ -54516,6 +54516,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicListener
       objectReference: {fileID: 0}
+    - target: {fileID: 3962413168040139058, guid: ce129452bcf20b845985b34094e7b889, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224637607539593437, guid: ce129452bcf20b845985b34094e7b889, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7868560656412302046, guid: ce129452bcf20b845985b34094e7b889, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69.90387
