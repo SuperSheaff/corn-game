@@ -44,8 +44,11 @@ public class Crow : MonoBehaviour
 
     private float cawCountdown = 0;
 
+    private MicRecorderUnity micRecorder;
+
     void Start()
     {
+        micRecorder = FindFirstObjectByType<MicRecorderUnity>();
         animator.SetBool("Idle", true); // Idle
         animator.SetBool("Flying", false); // Flying
         animator.SetBool("Cawing", false);
@@ -93,16 +96,10 @@ public class Crow : MonoBehaviour
 
         if (distance <= scareDistance && GameController.Instance.IsTransmitting)
         {
-            transmitTimer += Time.deltaTime;
-
-            if (transmitTimer >= transmitThreshold)
+            if (micRecorder.IsVoice)
             {
                 FlyAway();
             }
-        }
-        else
-        {
-            transmitTimer = 0f;
         }
 
         cawCountdown -= Time.deltaTime;
