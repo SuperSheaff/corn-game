@@ -114,7 +114,7 @@ public class MicRecorderUnity : MonoBehaviour {
 		source.clip = Microphone.Start(RecordingDeviceName, true, 10, 44100);
 
 		//source.clip = newClip;
-		Invoke(nameof(DelayPlay), 0.1f);
+		Invoke(nameof(DelayPlay), 0.5f);
 	}
 
 	private void DelayPlay() {
