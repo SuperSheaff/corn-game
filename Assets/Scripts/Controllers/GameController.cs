@@ -17,8 +17,11 @@ public class GameController : MonoBehaviour
 
     private KeyCode _walkieTalkieButton = KeyCode.Mouse0;
 
+    private MicRecorderUnity micRecorder;
+
     // FLAG CITY
 
+    [Header("Flag City")]
     public bool WalkieTutorialPassed    = false;
     public bool Dialogue1Started        = false;
     public bool Dialogue1Finished       = false;
@@ -52,6 +55,7 @@ public class GameController : MonoBehaviour
 
     // DIALOGUE & FMOD CITY
 
+    [Header("FMOD City")]
     private EventInstance _dialogueInstance1;
     [SerializeField] private EventReference _dialogueEvent1;
 
@@ -75,9 +79,10 @@ public class GameController : MonoBehaviour
 
     private EventInstance _dialogueInstance8;
     [SerializeField] private EventReference _dialogueEvent8;
-    
+
     // SCENE OBJECT CITY
 
+    [Header("Scene Object City")]
     public GameObject Scene2;
     public GameObject Scene4;
     public GameObject Scene5;
@@ -90,6 +95,8 @@ public class GameController : MonoBehaviour
     {
         SetupVariables();
         //StartCoroutine(DelayedAction(PlayDialogue1, 10f));
+
+        micRecorder = FindFirstObjectByType<MicRecorderUnity>();
     }
 
     void Awake()
@@ -154,16 +161,27 @@ public class GameController : MonoBehaviour
             {
                 IsTransmitting = true;
 
-                if (Input.GetKeyDown(_walkieTalkieButton)) UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+                if (Input.GetKeyDown(_walkieTalkieButton)) {
+                    UIController.Instance.ShowHand(UIController.HandName.Transmitting);
+                    micRecorder?.StartRecording();
+                }
 
                 if (waitingForTransmitAfterDialogue)
                 {
-                    transmitHoldTimer += Time.deltaTime;
-                    Debug.Log(transmitHoldTimer);
+                    if (micRecorder != null && micRecorder.IsAvailable) {
+                        if (micRecorder.IsVoice) {
+                            readyToTriggerNextDialogue = true;
+                            Debug.Log($"Tutorial progressed by Voice", gameObject);
+                        }
+                    } else {
+						transmitHoldTimer += Time.deltaTime;
+						Debug.Log(transmitHoldTimer);
 
-                    if (transmitHoldTimer >= 1f)
-                    {
-                        readyToTriggerNextDialogue = true;
+						if (transmitHoldTimer >= 1f)
+						{
+							readyToTriggerNextDialogue = true;
+						}
+
                     }
                 }
             }
@@ -184,6 +202,8 @@ public class GameController : MonoBehaviour
                 IsTransmitting = false;
                 UIController.Instance.ShowHand(UIController.HandName.Idle);
                 transmitHoldTimer = 0f;
+
+				micRecorder?.StopRecording();
             }
         }
         else
