@@ -49117,11 +49117,11 @@ MonoBehaviour:
     Path: event:/dlg8-get out of the cornfield
   _droneLowEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1651384225
+      Data2: 1241854353
+      Data3: 2069237161
+      Data4: 182821703
+    Path: event:/drone-low
   Scene2: {fileID: 689553887}
   Scene4: {fileID: 942709427}
   Scene5: {fileID: 1244226000}
