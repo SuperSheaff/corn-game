@@ -5,7 +5,6 @@ using System.Collections;
 using System;
 using StarterAssets;
 
-
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
@@ -34,6 +33,8 @@ public class GameController : MonoBehaviour
     private float transmitHoldTimer = 0f;
     private bool readyToTriggerNextDialogue = false;
     private Action nextScriptedDialogue;
+
+    private int _scareSelector;
 
     // DIALOGUE & FMOD CITY
 
@@ -268,8 +269,27 @@ public class GameController : MonoBehaviour
 
     public void PlayJumpScare()
     {
+        _scareSelector = UnityEngine.Random.Range(1,4);
         if (jumpScareAnimator != null)
         {
+            switch (_scareSelector)
+            {
+                case 1:
+                    jumpScareAnimator.SetBool("Select V", true);
+                    jumpScareAnimator.SetBool("Select H", false);
+                    jumpScareAnimator.SetBool("Select -H", false);
+                    break;
+                case 2:
+                    jumpScareAnimator.SetBool("Select V", false);
+                    jumpScareAnimator.SetBool("Select H", true);
+                    jumpScareAnimator.SetBool("Select -H", false);
+                    break;
+                case 3:
+                    jumpScareAnimator.SetBool("Select V", false);
+                    jumpScareAnimator.SetBool("Select H", false);
+                    jumpScareAnimator.SetBool("Select -H", true);
+                    break;
+            }
             jumpScareAnimator.SetTrigger("PlayJumpScare");
         }
         else
