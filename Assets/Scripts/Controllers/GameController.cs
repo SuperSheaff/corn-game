@@ -273,7 +273,7 @@ public class GameController : MonoBehaviour
         if (PlaybackState(_dialogueInstance8) != PLAYBACK_STATE.PLAYING && Dialogue8Started && !Dialogue8Finished)
         {
             Debug.Log("Dialogue 8 Finished");
-            Dialogue7Finished = true;
+            Dialogue8Finished = true;
             StopReceiving();
         }
 
